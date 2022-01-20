@@ -1,0 +1,3 @@
+module FMCQmlPlugin
+plugin FMCQmlPlugin
+typeinfo FMCQmlPlugin.qmltypes

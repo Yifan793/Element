@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+    <meta>
+        <script src="particle.js"/>
+    </meta>
+    <collapse title="粒子">
+        <column>
+            <checkbox name="loop">循环发射</checkbox>
+            <one_number_input enabled="isNotLoop()">粒子发射时长</one_number_input>
+            <one_number_input>粒子最大数量</one_number_input>
+            <two_number_input>生命范围</two_number_input>
+            <two_number_input>初始大小范围</two_number_input>
+            <two_number_input>初始速度范围</two_number_input>
+            <two_number_input>初始旋转范围</two_number_input>
+            <two_number_input>旋转变化范围</two_number_input>
+            <one_number_input>模拟速度</one_number_input>
+            <checkbox value="isSizeOverLifeTimeConstant()">大小随生命变化</checkbox>
+            <three_number_input>受力</three_number_input>
+        </column>
+    </collapse>
+    <collapse title="发射器">
+        <column>
+            <one_number_input>每秒生成粒子数</one_number_input>
+            <one_number_input>粒子延时发射</one_number_input>
+            <one_number_input>爆发延迟</one_number_input>
+            <one_number_input>爆发数量</one_number_input>
+            <one_number_input>爆发时间间隔</one_number_input>
+            <one_number_input>爆发次数</one_number_input>
+            <combobox name="emitterShape" title="发射器形状">
+                <option>长方形</option>
+                <option>圆</option>
+                <option>圆锥</option>
+                <option>球面</option>
+            </combobox>
+            <item name="box" visible="false">
+                <three_number_input>长宽高</three_number_input>
+                <checkbox>方向随机</checkbox>
+                <three_number_input>速度方向</three_number_input>
+            </item>
+            <item name="circle" visible="false">
+                <one_number_input>半径</one_number_input>
+                <checkbox>方向随机</checkbox>
+                <one_number_input>圆弧角度</one_number_input>
+                <one_number_input>分散</one_number_input>
+            </item>
+            <item name="cone" visible="false">
+                <combobox title="发射部位">
+                    <option>顶面</option>
+                    <option>体积</option>
+                    <option>表面</option>
+                </combobox>
+                <one_number_input>顶部半径</one_number_input>
+                <one_number_input>锥角</one_number_input>
+                <one_number_input>边长</one_number_input>
+                <checkbox>方向随机</checkbox>
+            </item>
+            <item name="sphere" visible="false">
+                <one_number_input>半径</one_number_input>
+                <checkbox>半球</checkbox>
+                <checkbox>方向随机</checkbox>
+                <one_number_input>圆弧角度</one_number_input>
+                <one_number_input>分散</one_number_input>
+            </item>
+        </column>
+    </collapse>
+    <collapse title="重力">
+        <column>
+            <checkbox>启用重力</checkbox>
+            <item enabled="isEnableAttr()">
+                <three_number_input>位置</three_number_input>
+                <one_number_input>强度</one_number_input>
+                <checkbox>本地空间</checkbox>
+                <one_number_input>最大加速限制</one_number_input>
+                <one_number_input>阻尼</one_number_input>
+            </item>
+        </column>
+    </collapse>
+    <collapse title="渲染">
+        <column>
+            <texture_combobox>贴图</texture_combobox>
+            <two_colorPicker>颜色</two_colorPicker>
+            <combobox>材质类型</combobox>
+            <slider_negative>渲染队列</slider_negative>
+            <checkbox>开启深度</checkbox>
+            <checkbox>深度可写</checkbox>
+        </column>
+    </collapse>
+    <collapse title="序列帧动画">
+        <column>
+            <checkbox>启用序列帧动画</checkbox>
+            <item enabled="isEnableUVAnim()">
+                <one_number_input>总帧数</one_number_input>
+                <two_number_input>行数/列数</two_number_input>
+                <one_number_input>播放速度</one_number_input>
+                <checkbox>第一帧随机</checkbox>
+            </item>
+        </column>
+    </collapse>
+</page>

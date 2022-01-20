@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>xml/particleSystem.js</file>
+        <file>xml/particleSystem.xml</file>
+    </qresource>
+</RCC>
