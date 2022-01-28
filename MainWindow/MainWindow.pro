@@ -9,15 +9,17 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 #qml控件库提示
-QML_IMPORT_PATH += $$PWD/builtinRes/baseWidgets
+QML_IMPORT_PATH = $$PWD/builtinRes/baseWidgets
 
 SOURCES += \
     MainWidget.cpp \
     main.cpp \
+    xmlparser/BEXmlDomParser.cpp \
     xmlparser/BEXmlParser.cpp
 
 HEADERS += \
     MainWidget.h \
+    xmlparser/BEXmlDomParser.h \
     xmlparser/BEXmlParser.h
 
 FORMS +=

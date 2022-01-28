@@ -49,7 +49,7 @@ bool BEXmlParser::loadFile(const QString& filePath)
     return true;
 }
 
-bool BEXmlParser::parser()
+bool BEXmlParser::parse()
 {
     if (m_xmlReader.readNextStartElement())
     {
@@ -272,9 +272,13 @@ void BEXmlParser::readCheckBox(QJsonArray& dataArr)
     Q_ASSERT(m_xmlReader.isStartElement() && m_xmlReader.name() == c_checkbox);
     QJsonObject obj = QJsonObject{
         { "type", c_checkbox },
-        { "titleText", m_xmlReader.readElementText() },
-        { "name", m_xmlReader.attributes().value("name").toString() }
+        { "titleText", m_xmlReader.readElementText() }
     };
+    auto attrs = m_xmlReader.attributes();
+    for (auto it = attrs.begin(); it != attrs.end(); it++)
+    {
+        obj[it->name().toString()] = it->value().toString();
+    }
     dataArr.append(obj);
 }
 
@@ -285,6 +289,11 @@ void BEXmlParser::readOneNumberInput(QJsonArray& dataArr)
         { "type", c_one_number_input },
         { "titleText", m_xmlReader.readElementText() }
     };
+    auto attrs = m_xmlReader.attributes();
+    for (auto it = attrs.begin(); it != attrs.end(); it++)
+    {
+        obj[it->name().toString()] = it->value().toString();
+    }
     dataArr.append(obj);
 }
 
@@ -295,6 +304,11 @@ void BEXmlParser::readTwoNumberInput(QJsonArray& dataArr)
         { "type", c_two_number_input },
         { "titleText", m_xmlReader.readElementText() }
     };
+    auto attrs = m_xmlReader.attributes();
+    for (auto it = attrs.begin(); it != attrs.end(); it++)
+    {
+        obj[it->name().toString()] = it->value().toString();
+    }
     dataArr.append(obj);
 }
 
@@ -305,6 +319,11 @@ void BEXmlParser::readThreeNumberInput(QJsonArray& dataArr)
         { "type", c_three_number_input },
         { "titleText", m_xmlReader.readElementText() }
     };
+    auto attrs = m_xmlReader.attributes();
+    for (auto it = attrs.begin(); it != attrs.end(); it++)
+    {
+        obj[it->name().toString()] = it->value().toString();
+    }
     dataArr.append(obj);
 }
 
@@ -314,27 +333,37 @@ void BEXmlParser::readCombobox(QJsonArray& dataArr)
     QJsonObject obj = QJsonObject{
         { "type", c_combobox }
     };
-    QJsonArray options;
+    auto attrs = m_xmlReader.attributes();
+    for (auto it = attrs.begin(); it != attrs.end(); it++)
+    {
+        obj[it->name().toString()] = it->value().toString();
+    }
+    QJsonArray childrenDataArr;
     while (m_xmlReader.readNextStartElement())
     {
         if (m_xmlReader.name() == c_option)
         {
-            options.append(readOption());
+            readOption(childrenDataArr);
         }
         else
         {
             m_xmlReader.skipCurrentElement();
         }
     }
-    obj["options"] = options;
+    obj["children"] = childrenDataArr;
     dataArr.append(obj);
 }
 
-QJsonObject BEXmlParser::readOption()
+void BEXmlParser::readOption(QJsonArray& dataArr)
 {
     Q_ASSERT(m_xmlReader.isStartElement() && m_xmlReader.name() == c_option);
     QJsonObject obj = QJsonObject{
         { "titleText", m_xmlReader.readElementText() }
     };
-    return obj;
+    auto attrs = m_xmlReader.attributes();
+    for (auto it = attrs.begin(); it != attrs.end(); it++)
+    {
+        obj[it->name().toString()] = it->value().toString();
+    }
+    dataArr.append(obj);
 }

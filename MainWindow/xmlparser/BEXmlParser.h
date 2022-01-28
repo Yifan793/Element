@@ -9,7 +9,7 @@ class BEXmlParser
 public:
     BEXmlParser();
     bool loadFile(const QString& filePath);
-    bool parser();
+    bool parse();
     QJsonObject getXmlObj() { return m_xmlObj; }
 
 protected:
@@ -25,7 +25,7 @@ protected:
     void readTwoNumberInput(QJsonArray& dataArr);
     void readThreeNumberInput(QJsonArray& dataArr);
     void readCombobox(QJsonArray& dataArr);
-    QJsonObject readOption();
+    void readOption(QJsonArray& dataArr);
 
 private:
     QJsonObject m_xmlObj;

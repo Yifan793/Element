@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
         <file>SettingPage.qml</file>
+        <file>createComponent.js</file>
+        <file>Components.qml</file>
+        <file>createTree.js</file>
     </qresource>
 </RCC>
