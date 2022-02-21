@@ -26,7 +26,7 @@ Rectangle {
 
     function loadComponent(parent, obj) {
         if (obj.type === "script") {
-            ComponentCreator.loadJsFile("qrc:/xml/" + obj.src)
+            ComponentCreator.loadJsFile(obj.src)
             return
         }
         let comp = components.allComponent[obj.type]

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <page>
-    <script src="particleSystem.js"/>
+    <script src="qrc:/xml/particleSystem.js"/>
     <collapse title="粒子">
         <column>
             <checkbox prop="loop" tag="isLoop">循环发射</checkbox>

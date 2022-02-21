@@ -54,7 +54,7 @@ QString MainWidget::getQmlUrl()
 QJsonObject MainWidget::parseXml()
 {
     BEXmlParser xmlParser;
-    xmlParser.loadFile(":/xml/particleSystem.xml");
+    xmlParser.loadFile(":/xml/hairdyeing/hairdyeing.xml");
     xmlParser.parse();
     //    qDebug() << "test xmlObj " << __FUNCTION__ << " " << xmlParser.getXmlObj();
     return xmlParser.getXmlObj();
@@ -63,7 +63,7 @@ QJsonObject MainWidget::parseXml()
 QJsonObject MainWidget::parseDomXml()
 {
     BEXmlDomParser xmlParser;
-    xmlParser.loadFile(":/xml/particleSystem.xml");
+    xmlParser.loadFile(":/xml/hairdyeing/hairdyeing.xml");
     xmlParser.parse();
     //    qDebug() << "test xmlObj 2 " << __FUNCTION__ << " " << xmlParser.getXmlObj();
     return xmlParser.getXmlObj();

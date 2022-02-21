@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>xml/particleSystem.js</file>
         <file>xml/particleSystem.xml</file>
+        <file>xml/hairdyeing/hairdyeing.js</file>
+        <file>xml/hairdyeing/hairdyeing.xml</file>
     </qresource>
 </RCC>

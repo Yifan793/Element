@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+    <script src="qrc:/xml/hairdyeing/hairdyeing.js"/>
+    <collapse title="基础设置">
+        <column>
+            <combobox prop="mode" name="mode" title="模式" tag="mode">
+                <option prop="hexColor">hexColor</option>
+                <option prop="colorTemplate">colorTemplate</option>
+            </combobox>
+            <sliderInput4>强度</sliderInput4>
+            <column tag="hexColor" :visible='isComboboxSelect("hexColor")'>
+                <checkbox>使用单颜色</checkbox>
+                <one_colorPicker></one_colorPicker>
+                <one_colorPicker></one_colorPicker>
+            </column>
+            <column tag="colorTemplate" :visible='isComboboxSelect("colorTemplate")'>
+                <dropFile detailText="拖拽照片到此处以替换资源"></dropFile>
+                <image></image>
+            </column>
+        </column>
+    </collapse>
+</page>
