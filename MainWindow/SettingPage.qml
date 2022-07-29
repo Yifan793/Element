@@ -26,7 +26,8 @@ Rectangle {
 
     function loadComponent(parent, obj) {
         if (obj.type === "script") {
-            ComponentCreator.loadJsFile(obj.src)
+            const jsHelper = ComponentCreator.loadJsFile(root, parent, obj.src)
+            elements["__jsHelper"] = jsHelper
             return
         }
         let comp = components.allComponent[obj.type]

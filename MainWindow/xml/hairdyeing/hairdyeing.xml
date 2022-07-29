@@ -7,7 +7,7 @@
                 <option prop="hexColor">hexColor</option>
                 <option prop="colorTemplate">colorTemplate</option>
             </combobox>
-            <sliderInput4>强度</sliderInput4>
+            <sliderInput3>强度</sliderInput3>
             <column tag="hexColor" :visible='isComboboxSelect("hexColor")'>
                 <checkbox>使用单颜色</checkbox>
                 <one_colorPicker></one_colorPicker>

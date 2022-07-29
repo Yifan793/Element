@@ -25,8 +25,16 @@ const createComponentObjFunc = {
     "image": createObjectDefault
 }
 
-function loadJsFile(path) {
-    Qt.include(path)
+var rootPage = undefined
+
+function loadJsFile(root, parent, path) {
+    let qmlString = `import '${path}' as JsFunc; import QtQuick 2.15; Item {id: __jsHelper; property var __jsFunc: JsFunc;}`
+    let jsHelperObj = Qt.createQmlObject(qmlString, parent, "errorMsg")
+    if (jsHelperObj === null) {
+        console.error("Error creating jsHelperObj")
+    }
+    rootPage = root
+    return jsHelperObj
 }
 
 const defaultKey = ["children", "type"]
@@ -37,8 +45,12 @@ function getPropertiesObj(obj) {
         if (defaultKey.indexOf(key) !== -1) {
             return
         }
+
         if (key.startsWith(":")) {
-            propObj[key.slice(1)] = Qt.binding(() => eval(obj[key]))
+            propObj[key.slice(1)] = rootPage.elements.__jsHelper.__jsFunc[obj[key]]
+        } else if(key.startsWith("on-"))
+        {
+            propObj[key.slice(3)] = rootPage.elements.__jsHelper.__jsFunc[obj[key]]
         } else {
             let objValue = obj[key]
             //所有的数据类型都是string，需要转换

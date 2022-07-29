@@ -31,7 +31,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     qml.qrc \
-    xml.qrc
+    xml.qrc \
+    xmlPlugin.qrc
 
 src_dir = $$PWD/../builtinRes
 dst_dir = $$OUT_PWD/$${TARGET}.app/Contents/Resources/
